@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Football Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="orientation-warning" role="status">
+      Bitte drehe dein Gerät ins Hochformat, um optimal zu spielen.
+    </div>
+
+    <main class="app-shell">
+      <section id="start-screen" class="screen screen--narrow">
+        <header class="start-hero">
+          <p class="eyebrow">Football Quiz</p>
+          <h1>Football Quiz</h1>
+          <p class="subtitle">Wähle ein Spiel und teste dein Fußballwissen anhand echter Daten.</p>
+        </header>
+
+        <article id="resume-card" class="resume-card is-hidden">
+          <span class="card-kicker">Gespeichertes Spiel</span>
+          <h2 id="resume-title">Fortsetzen</h2>
+          <p id="resume-summary"></p>
+          <div class="button-row">
+            <button id="resume-btn" class="answer-button answer-button--next" type="button">Fortsetzen</button>
+            <button id="discard-save-btn" class="answer-button answer-button--lower" type="button">Verwerfen</button>
+          </div>
+        </article>
+
+        <section class="game-cards" aria-label="Spielauswahl">
+          <button class="game-card" type="button" data-start-game="higherLower">
+            <span class="card-kicker">Spiel</span>
+            <strong>Higher / Lower</strong>
+            <span>Vergleiche zwei Spieler. Entscheide, ob der rechte Spieler mehr oder weniger/gleich in der gewählten Statistik hat.</span>
+          </button>
+
+          <button class="game-card" type="button" data-start-game="rankIt">
+            <span class="card-kicker">Spiel</span>
+            <strong>Rank It</strong>
+            <span>Ordne 10 Spieler absteigend nach der gewählten Statistik in eine Rangliste ein.</span>
+          </button>
+
+          <button class="game-card" type="button" data-start-game="guessThePlayer">
+            <span class="card-kicker">Spiel</span>
+            <strong>Guess the Player</strong>
+            <span>Errate den Spieler anhand von Nation, Position, Vereinen, Karrierewerten und Marktwert.</span>
+          </button>
+
+          <button class="game-card" type="button" data-start-game="careerPath">
+            <span class="card-kicker">Spiel</span>
+            <strong>Career Path</strong>
+            <span>Errate den Spieler anhand seines Karrierewegs und seiner Vereinswechsel.</span>
+          </button>
+        </section>
+      </section>
+
+      <section id="setup-screen" class="screen screen--narrow is-hidden">
+        <button id="setup-back-btn" class="text-button" type="button">Zur Spielauswahl</button>
+        <header class="setup-header">
+          <p class="eyebrow">Einstellungen</p>
+          <h1 id="setup-title">Higher / Lower</h1>
+          <p id="setup-description" class="subtitle"></p>
+        </header>
+
+        <section class="setup-stack" aria-label="Einstellungen">
+          <article class="setup-section">
+            <h2>Wettbewerb</h2>
+            <p>Wähle, aus welchem Wettbewerb die Spieler kommen sollen.</p>
+            <div class="segmented-control" role="group" aria-label="Wettbewerb auswählen">
+              <button class="segment is-active" type="button" data-scope="top5">Top-5-Ligen gesamt</button>
+              <button class="segment" type="button" data-scope="bundesliga">Bundesliga</button>
+              <button class="segment" type="button" data-scope="premier_league">Premier League</button>
+              <button class="segment" type="button" data-scope="laliga">LaLiga</button>
+              <button class="segment" type="button" data-scope="serie_a">Serie A</button>
+              <button class="segment" type="button" data-scope="ligue_1">Ligue 1</button>
+            </div>
+          </article>
+
+          <article class="setup-section">
+            <h2>Spielerpool</h2>
+            <p>Bekannte Spieler nutzt einen berechneten Fame Score aus Karrierewerten, Marktwert und Nationalteamdaten.</p>
+            <div class="segmented-control" role="group" aria-label="Spielerpool auswählen">
+              <button class="segment is-active" type="button" data-player-pool="known">Bekannte Spieler</button>
+              <button class="segment" type="button" data-player-pool="all">Alle Spieler</button>
+            </div>
+          </article>
+
+          <article class="setup-section">
+            <h2>Status</h2>
+            <p>Filtere nach aktiven oder bereits zurückgetretenen Spielern.</p>
+            <div class="segmented-control" role="group" aria-label="Statusfilter auswählen">
+              <button class="segment is-active" type="button" data-status="all">Alle</button>
+              <button class="segment" type="button" data-status="active">Aktiv</button>
+              <button class="segment" type="button" data-status="retired">Karriere beendet</button>
+            </div>
+          </article>
+
+          <article id="stat-setup-section" class="setup-section">
+            <h2>Statistik</h2>
+            <p>Wähle, nach welcher Statistik gespielt wird.</p>
+            <div class="segmented-control" role="group" aria-label="Statistiktyp auswählen">
+              <button class="segment is-active" type="button" data-stat="scope_goals">Tore</button>
+              <button class="segment" type="button" data-stat="scope_assists">Assists</button>
+              <button class="segment" type="button" data-stat="scope_apps">Einsätze</button>
+              <button class="segment" type="button" data-stat="peak_market_value">Peak-Marktwert</button>
+            </div>
+          </article>
+        </section>
+
+        <p class="data-note compact-note">
+          Alle Werte sind Werte laut Datenbasis im gewählten Wettbewerb-, Spielerpool- und Statusfilter und können von offiziellen All-Time-Statistiken abweichen.
+        </p>
+
+        <div class="setup-actions">
+          <button id="start-game-btn" class="answer-button answer-button--next" type="button">Spiel starten</button>
+          <button id="setup-back-secondary-btn" class="answer-button answer-button--lower" type="button">Zurück</button>
+        </div>
+      </section>
+
+      <section id="game-screen" class="screen is-hidden">
+        <header class="game-header">
+          <button id="game-home-btn" class="text-button" type="button">Zur Spielauswahl</button>
+          <div>
+            <p class="eyebrow">Aktives Spiel</p>
+            <h1 id="app-title">Higher / Lower</h1>
+          </div>
+        </header>
+
+        <p id="mode-note" class="mode-note">Top-5-Ligen gesamt · Bekannte Spieler · Alle · Tore in den Top-5-Ligen</p>
+        <p id="rule-note" class="rule-note">
+          Vergleiche zwei Spieler anhand der gewählten Statistik. Der linke Wert ist sichtbar. Schätze, ob der rechte Spieler mehr oder weniger/gleich hat.
+        </p>
+        <p id="peak-note" class="data-note compact-note is-hidden">
+          Peak-Marktwert ist karriereweit laut Datenbasis und nicht zwingend während der Zeit im gewählten Wettbewerb.
+        </p>
+        <p id="transfer-note" class="data-note compact-note is-hidden">
+          Transferdaten und Ablösen stammen aus der Datenbasis und können unvollständig sein.
+        </p>
+
+        <section class="score-panel" aria-label="Punktestand">
+          <div>
+            <span id="primary-score-label" class="score-label">Streak</span>
+            <strong id="streak">0</strong>
+          </div>
+          <div id="secondary-score-box">
+            <span id="secondary-score-label" class="score-label">Fehler</span>
+            <strong id="secondary-score">0</strong>
+          </div>
+          <div>
+            <span class="score-label">Highscore</span>
+            <strong id="highscore">0</strong>
+          </div>
+        </section>
+
+        <section id="message" class="message" aria-live="polite"></section>
+
+        <section id="higher-lower-game">
+          <section class="matchup" aria-label="Spielervergleich">
+            <article class="player-card" id="left-card">
+              <span class="card-kicker">Referenzspieler</span>
+              <h2 id="left-name">Lädt...</h2>
+              <div class="metric-box">
+                <span id="left-stat-label">Tore</span>
+                <strong id="left-stat-value">-</strong>
+              </div>
+              <dl class="player-facts" id="left-facts"></dl>
+            </article>
+
+            <div class="versus" aria-hidden="true">VS</div>
+
+            <article class="player-card player-card--challenger" id="right-card">
+              <span class="card-kicker">Herausforderer</span>
+              <h2 id="right-name">Lädt...</h2>
+              <div class="metric-box metric-box--hidden" id="right-metric">
+                <span id="right-stat-label">Tore</span>
+                <strong id="right-stat-value">?</strong>
+              </div>
+              <dl class="player-facts" id="right-facts"></dl>
+            </article>
+          </section>
+
+          <section class="actions" aria-label="Antwort auswählen">
+            <button id="higher-btn" class="answer-button answer-button--higher" type="button">Mehr</button>
+            <button id="lower-btn" class="answer-button answer-button--lower" type="button">Weniger oder gleich</button>
+            <button id="next-btn" class="answer-button answer-button--next is-hidden" type="button">Nächste Runde</button>
+            <button id="restart-btn" class="answer-button answer-button--restart is-hidden" type="button">Neue Runde</button>
+          </section>
+        </section>
+
+        <section id="rank-it-game" class="rank-game is-hidden" aria-label="Rank It">
+          <section class="rank-layout">
+            <article class="player-card rank-candidate-card">
+              <span class="card-kicker">Einordnen</span>
+              <h2 id="rank-candidate-name">Lädt...</h2>
+              <div class="metric-box metric-box--hidden" id="rank-candidate-metric">
+                <span id="rank-candidate-stat-label">Tore</span>
+                <strong id="rank-candidate-stat-value">?</strong>
+              </div>
+              <dl class="player-facts" id="rank-candidate-facts"></dl>
+            </article>
+
+            <section class="rank-panel" aria-label="Rangliste">
+              <div class="rank-panel-header">
+                <div>
+                  <span class="card-kicker">Rangliste</span>
+                  <h2>Absteigend sortieren</h2>
+                </div>
+                <p id="rank-progress" class="rank-progress">1 von 10 gesetzt</p>
+              </div>
+              <p class="rank-help">Oben = höherer Wert · Unten = niedrigerer Wert</p>
+              <div id="rank-list" class="rank-list"></div>
+              <div id="rank-end-summary" class="rank-end-summary is-hidden"></div>
+            </section>
+          </section>
+        </section>
+
+        <section id="guess-player-game" class="guess-game is-hidden" aria-label="Guess the Player">
+          <section class="guess-layout">
+            <article class="player-card guess-card">
+              <span class="card-kicker">Gesuchter Spieler</span>
+              <h2>Wer ist gesucht?</h2>
+              <dl class="player-facts guess-hints" id="guess-hints"></dl>
+            </article>
+
+            <section class="guess-panel" aria-label="Spieler erraten">
+              <div class="guess-panel-header">
+                <span class="card-kicker">Antwort</span>
+                <h2>Spielername</h2>
+              </div>
+              <label class="guess-label" for="guess-input">Spielername eingeben</label>
+              <input id="guess-input" class="guess-input" type="text" autocomplete="off" placeholder="Spielername eingeben...">
+              <div id="guess-suggestions" class="suggestions is-hidden" role="listbox" aria-label="Spielervorschläge"></div>
+              <div class="guess-actions">
+                <button id="guess-submit-btn" class="answer-button answer-button--next" type="button">Antwort prüfen</button>
+                <button id="guess-next-btn" class="answer-button answer-button--next is-hidden" type="button">Nächster Spieler</button>
+                <button id="guess-new-round-btn" class="answer-button answer-button--restart is-hidden" type="button">Neue Runde</button>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section id="career-path-game" class="career-game is-hidden" aria-label="Career Path">
+          <section class="career-layout">
+            <article class="player-card career-path-card">
+              <span class="card-kicker">Karriereweg</span>
+              <h2>Welche Karriere ist das?</h2>
+              <div id="career-club-sequence" class="club-sequence"></div>
+              <div id="career-timeline" class="career-timeline"></div>
+              <dl id="career-reveal-facts" class="player-facts career-reveal-facts is-hidden"></dl>
+            </article>
+
+            <section class="guess-panel" aria-label="Spieler erraten">
+              <div class="guess-panel-header">
+                <span class="card-kicker">Antwort</span>
+                <h2>Spielername</h2>
+              </div>
+              <label class="guess-label" for="career-input">Spielername eingeben</label>
+              <input id="career-input" class="guess-input" type="text" autocomplete="off" placeholder="Spielername eingeben...">
+              <div id="career-suggestions" class="suggestions is-hidden" role="listbox" aria-label="Spielervorschläge"></div>
+              <div class="guess-actions">
+                <button id="career-submit-btn" class="answer-button answer-button--next" type="button">Antwort prüfen</button>
+                <button id="career-next-btn" class="answer-button answer-button--next is-hidden" type="button">Nächster Spieler</button>
+                <button id="career-new-round-btn" class="answer-button answer-button--restart is-hidden" type="button">Neue Runde</button>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section class="game-actions" aria-label="Spielaktionen">
+          <button id="global-new-round-btn" class="answer-button answer-button--next" type="button">Neue Runde</button>
+          <button id="change-settings-btn" class="answer-button answer-button--lower" type="button">Einstellungen ändern</button>
+        </section>
+
+        <p class="data-note compact-note">
+          Alle Werte sind Werte laut Datenbasis im gewählten Wettbewerb-, Spielerpool- und Statusfilter und können von offiziellen All-Time-Statistiken abweichen.
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
