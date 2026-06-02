@@ -1,0 +1,298 @@
+[
+  {
+    "scope_key": "top5",
+    "scope_label": "Top-5-Ligen gesamt",
+    "player_pool_key": "all",
+    "player_pool_label": "Alle Spieler",
+    "filename": "quiz_pool_top5_all.json",
+    "players": 7131,
+    "competition_ids": [
+      "L1",
+      "GB1",
+      "ES1",
+      "IT1",
+      "FR1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": null,
+    "description": "Breiter spielbarer Pool"
+  },
+  {
+    "scope_key": "top5",
+    "scope_label": "Top-5-Ligen gesamt",
+    "player_pool_key": "known",
+    "player_pool_label": "Bekannte Spieler",
+    "filename": "quiz_pool_top5_known.json",
+    "players": 3967,
+    "competition_ids": [
+      "L1",
+      "GB1",
+      "ES1",
+      "IT1",
+      "FR1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": 0.55,
+    "description": "Bekannte Spieler nach fame_score"
+  },
+  {
+    "scope_key": "bundesliga",
+    "scope_label": "Bundesliga",
+    "player_pool_key": "all",
+    "player_pool_label": "Alle Spieler",
+    "filename": "quiz_pool_bundesliga_all.json",
+    "players": 1540,
+    "competition_ids": [
+      "L1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": null,
+    "description": "Breiter spielbarer Pool"
+  },
+  {
+    "scope_key": "bundesliga",
+    "scope_label": "Bundesliga",
+    "player_pool_key": "known",
+    "player_pool_label": "Bekannte Spieler",
+    "filename": "quiz_pool_bundesliga_known.json",
+    "players": 845,
+    "competition_ids": [
+      "L1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": 0.55,
+    "description": "Bekannte Spieler nach fame_score"
+  },
+  {
+    "scope_key": "premier_league",
+    "scope_label": "Premier League",
+    "player_pool_key": "all",
+    "player_pool_label": "Alle Spieler",
+    "filename": "quiz_pool_premier_league_all.json",
+    "players": 2164,
+    "competition_ids": [
+      "GB1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": null,
+    "description": "Breiter spielbarer Pool"
+  },
+  {
+    "scope_key": "premier_league",
+    "scope_label": "Premier League",
+    "player_pool_key": "known",
+    "player_pool_label": "Bekannte Spieler",
+    "filename": "quiz_pool_premier_league_known.json",
+    "players": 1292,
+    "competition_ids": [
+      "GB1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": 0.55,
+    "description": "Bekannte Spieler nach fame_score"
+  },
+  {
+    "scope_key": "laliga",
+    "scope_label": "LaLiga",
+    "player_pool_key": "all",
+    "player_pool_label": "Alle Spieler",
+    "filename": "quiz_pool_laliga_all.json",
+    "players": 1939,
+    "competition_ids": [
+      "ES1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": null,
+    "description": "Breiter spielbarer Pool"
+  },
+  {
+    "scope_key": "laliga",
+    "scope_label": "LaLiga",
+    "player_pool_key": "known",
+    "player_pool_label": "Bekannte Spieler",
+    "filename": "quiz_pool_laliga_known.json",
+    "players": 1096,
+    "competition_ids": [
+      "ES1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": 0.55,
+    "description": "Bekannte Spieler nach fame_score"
+  },
+  {
+    "scope_key": "serie_a",
+    "scope_label": "Serie A",
+    "player_pool_key": "all",
+    "player_pool_label": "Alle Spieler",
+    "filename": "quiz_pool_serie_a_all.json",
+    "players": 1765,
+    "competition_ids": [
+      "IT1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": null,
+    "description": "Breiter spielbarer Pool"
+  },
+  {
+    "scope_key": "serie_a",
+    "scope_label": "Serie A",
+    "player_pool_key": "known",
+    "player_pool_label": "Bekannte Spieler",
+    "filename": "quiz_pool_serie_a_known.json",
+    "players": 1003,
+    "competition_ids": [
+      "IT1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": 0.55,
+    "description": "Bekannte Spieler nach fame_score"
+  },
+  {
+    "scope_key": "ligue_1",
+    "scope_label": "Ligue 1",
+    "player_pool_key": "all",
+    "player_pool_label": "Alle Spieler",
+    "filename": "quiz_pool_ligue_1_all.json",
+    "players": 1793,
+    "competition_ids": [
+      "FR1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": null,
+    "description": "Breiter spielbarer Pool"
+  },
+  {
+    "scope_key": "ligue_1",
+    "scope_label": "Ligue 1",
+    "player_pool_key": "known",
+    "player_pool_label": "Bekannte Spieler",
+    "filename": "quiz_pool_ligue_1_known.json",
+    "players": 968,
+    "competition_ids": [
+      "FR1"
+    ],
+    "available_stats": [
+      "scope_goals",
+      "scope_assists",
+      "scope_apps",
+      "peak_market_value"
+    ],
+    "status_filters": [
+      "all",
+      "active",
+      "retired"
+    ],
+    "known_quantile": 0.55,
+    "description": "Bekannte Spieler nach fame_score"
+  }
+]
